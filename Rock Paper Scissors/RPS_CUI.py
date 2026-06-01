@@ -16,7 +16,7 @@ while True:
             4.score
             5.how to play 
             6.documentation
-            6.`exit:\n'''))
+            7.`exit:\n'''))
     except ValueError:
         print("Invalid input. Please enter a number.")
         clr()
