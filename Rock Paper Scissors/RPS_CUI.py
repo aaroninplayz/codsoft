@@ -4,6 +4,7 @@ sc = 0
 su = 0
 d=0
 g=0
+r=0
 def clr():
     input("Press Enter to continue...")
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -16,7 +17,7 @@ while True:
             4.score
             5.how to play 
             6.documentation
-            7.`exit:\n'''))
+            7.exit:\n'''))
     except ValueError:
         print("Invalid input. Please enter a number.")
         clr()
@@ -308,6 +309,8 @@ Platform Support : Windows, Linux, macOS
 END OF DOCUMENTATION
 --------------------------------------------------
 """)
+        clr()
+        continue
     elif u == 5:
         print("""
 =========================
@@ -349,8 +352,9 @@ Select one of the following options from the main menu:
 2. Paper
 3. Scissors
 4. Score
-5. Documentation / How To
-6. Exit
+5. how to  play
+6. documentation
+7. Exit
 
 Step 3:
 Enter the corresponding number for your desired action.
@@ -414,39 +418,72 @@ END OF HOW TO PLAY
         clr()
         continue
     elif u == 4:
-        print(f"Your score:\t\t{su}")
-        print(f"Computer's score:\t{sc}")
-        print(f"Ties:\t\t\t{d}")
-        print(f"Games played:\t\t{g}")
+        print("====================")
+        print("CURRENT STATISTICS")
+        print("====================")
+        print()
+        print(f"Player Wins     : {su}")
+        print(f"Computer Wins   : {sc}")
+        print(f"Ties            : {d}")
+        print(f"Games Played    : {g}")
+
+        if g > 0:
+            winrate = (su / g) * 100
+        else:
+            winrate = 0
+
+        print()
+        print(f"Win Rate        : {winrate:.2f}%")
+        print()
+        print("====================")
         clr()
         continue
     elif u == 1:
         u = 'rock'
+        r=1
     elif u == 2:
-        u = 'paper'
+        u = 'paper' 
+        r=1
     elif u == 3:
         u = 'scissors'
+        r=1
+    elif u==420:
+        print("Congratulations! You found the secret option!")
+        r=int(input("Enter a number the number of times the geame to play on auto play: "))
+        clr()
+
     else:
         print("Invalid choice. Please try again.")
         clr()
-        continue
+        continue  
+    y=u
+    x=False
+    while r>0:
+        if y==420:
+            u= random.choice(['rock', 'paper', 'scissors'])
+            x=True
+        c= random.choice(['rock', 'paper', 'scissors'])
+        print(f"You chose: {u}")
+        print(f"Computer chose: {c}")
 
-    c= random.choice(['rock', 'paper', 'scissors'])
-    print(f"You chose: {u}")
-    print(f"Computer chose: {c}")
+        if u == c:
+            print("It's a tie!")
+            d+=1
+        elif (u == 'rock' and c == 'scissors') or (u == 'paper' and c == 'rock') or (u == 'scissors' and c == 'paper'):
+            print("You win!")
+            su+=1
+        else:
+            print("Computer wins!")
+            sc+=1
+        print(f"Your score: {su}")
+        print(f"Computer's score: {sc}")
+        g+=1
+        if x!=True:
+            clr()
+        else:
+            print(f"Round {g} completed.")
+            os.system('cls' if os.name == 'nt' else 'clear')
 
-    if u == c:
-        print("It's a tie!")
-        d+=1
-    elif (u == 'rock' and c == 'scissors') or (u == 'paper' and c == 'rock') or (u == 'scissors' and c == 'paper'):
-        print("You win!")
-        su+=1
-        
-    else:
-        print("Computer wins!")
-        sc+=1
-    print(f"Your score: {su}")
-    print(f"Computer's score: {sc}")
-    g+=1
-    clr()
+        r-=1
+    
     
