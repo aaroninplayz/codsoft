@@ -191,6 +191,18 @@ GitHub: [@aaroninplayz](https://github.com/aaroninplayz)
 
 ---
 
+## 🤖 AI Usage Disclosure
+
+All programs in this repository were designed, structured, and coded **entirely without the use of AI**. 
+
+AI was only used for the following specific tasks:
+- Researching and brainstroming additional features to add to the programs.
+- Writing the project documentation files.
+- Generating this `README.md` file.
+
+---
+
 ## 📄 License
 
 This project is open-source and available for educational purposes.
+
