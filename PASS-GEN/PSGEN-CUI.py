@@ -8,11 +8,12 @@ while True:
     print("\nWelcome to Pass-Gen!")
     print("1. Generate a password")
     print("2. Settings")
-    print("3. Exit")
+    print("3. How to use")
+    print("4. Exit")
     try:
         c = int(input("Enter your choice: "))
-        if c not in [1, 2, 3]:
-            print("Choose 1-3.")
+        if c not in [1, 2, 3, 4]:
+            print("Choose 1-4.")
             continue        
     except ValueError:
         print("Invalid input. Numbers only.")
@@ -58,5 +59,42 @@ while True:
             except ValueError:
                 print("Numbers only.")
     elif c == 3:
+        print('''=========== PASS-GEN HELP ===========
+
+Welcome to Pass-Gen, a simple password generator.
+
+MENU OPTIONS:
+1. Generate a password
+   - Enter desired length
+   - Password will be generated instantly
+
+2. Settings
+   - Choose password complexity:
+     1 → Letters only
+     2 → Letters + Numbers
+     3 → Letters + Symbols
+
+3. How to use
+   - Displays this help file
+
+4. Exit
+   - Closes the program
+
+------------------------------------
+
+NOTES:
+- Longer passwords = stronger passwords
+- Complexity increases security
+- Generated passwords are random and not stored
+
+------------------------------------
+
+TIP:
+If you're still using "123456",
+this program is already doing more work than you are.
+
+====================================''')
+        clr()
+    elif c == 4:
         print("Exiting Pass-Gen. Goodbye!")
         break
