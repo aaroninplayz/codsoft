@@ -1,5 +1,5 @@
 import os
-import random
+import secrets
 def clr():
     input("Press Enter to continue...")
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -33,14 +33,14 @@ while True:
             chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         else:
             chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
-        password = "" 
-        for _ in range(length):
-            password += random.choice(chars)
+        password = ''.join(secrets.choice(chars) for _ in range(length))
         print("\nGenerated password:", password)
         clr()
     elif c == 2:
         while True:
             print("\nSettings:")
+            print("Choose password complexity:")
+            print(f"Current setting: {s} \n")
             print("1. Only letters")
             print("2. Letters + numbers")
             print("3. Letters + numbers + symbols")
@@ -50,6 +50,7 @@ while True:
                 if 1 <= choice <= 3:
                     s = choice
                     print("Settings updated.")
+                    clr()
                 elif choice == 4:
                     break
                 else:
@@ -59,5 +60,3 @@ while True:
     elif c == 3:
         print("Exiting Pass-Gen. Goodbye!")
         break
-    else:
-        print("Invalid choice.")
